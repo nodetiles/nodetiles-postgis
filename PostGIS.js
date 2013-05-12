@@ -73,7 +73,7 @@ PostGISSource.prototype = {
       // console.log(min,max);
     }
     
-    pg.connect(this._connectionString, function(err, client) { // Switched method signature... WTF?!
+    pg.connect(this._connectionString, function(err, client, done) { // Switched method signature... WTF?!
       if (err) { return callback(err, null); }
       // console.log("Loading features...");
       var start, query;
@@ -105,9 +105,11 @@ PostGISSource.prototype = {
             }
           }
           catch(err) {
+            done();
             return callback(err, null);
           }
         }
+        done();
         callback(err, geoJson);
       }.bind(this));
     }.bind(this));
