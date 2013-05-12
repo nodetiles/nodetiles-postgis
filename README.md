@@ -12,14 +12,13 @@ var nodetiles = require('nodetiles-core');
 var PostGIS = nodetiles.datasources.GeoJson;
     
 /* Create your map context */
-var map = new nodetiles.Map({
-    projection: "EPSG:4326" // set the projection of the map
-});
+var map = new nodetiles.Map();
 
 /* Add some data from PostGIS! */
 map.addData(new PostGIS({
-  name: "world",
-  path: __dirname + '/countries.geojson', 
+  connectionString: "postgresql://localhost/nttest",
+  tableName: "countries",
+  geomField: "wkb_geometry",
   projection: "EPSG:900913"
 }));
 ```
