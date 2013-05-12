@@ -16,7 +16,7 @@ var map = new nodetiles.Map();
 
 /* Add some data from PostGIS! */
 map.addData(new PostGIS({
-  connectionString: "postgresql://localhost/nttest",
+  connectionString: "postgresql://localhost/database_name",
   tableName: "countries",
   geomField: "wkb_geometry",
   projection: "EPSG:900913"
