@@ -3,6 +3,7 @@ var sinon  = require('sinon');
 var pg     = require('pg').native;
 var PostGISSource = require('../PostGIS');
 
+
 var source = new PostGISSource({
   connectionString: process.env.DATABASE_URL || "tcp://postgres@localhost/postgis", //required
   tableName: "rpd_parks", // required
